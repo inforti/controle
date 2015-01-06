@@ -6,6 +6,7 @@
     <class>br.com.controle.model.entities.Produto</class>
     <class>br.com.controle.model.entities.Locacao</class>
     <class>br.com.controle.model.entities.rafael</class>
+    <class>br.com.controle.model.entities.Situacao</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/controle"/>

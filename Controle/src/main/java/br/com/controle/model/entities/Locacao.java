@@ -8,11 +8,14 @@ package br.com.controle.model.entities;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
 
@@ -32,16 +35,64 @@ public class Locacao implements Serializable {
     private String locador;
     @Column (name ="quantidade",nullable = false)
     private int quantidade;
-    
+  
+        
     @ManyToOne(optional = false)
     @ForeignKey(name="ProdutoLocacao")
-    private Locacao locacao;
+    @JoinColumn(name ="id",referencedColumnName = "id")
+    private Produto produtos;
     
     
+    @ManyToOne(optional = false)
+    @ForeignKey(name="SetorLocacao")
+    @JoinColumn(name ="id",referencedColumnName = "id")
+    private Setor setor;
     
-    
+    @OneToOne(optional = true, fetch = FetchType.LAZY)
+    @ForeignKey(name="SituaaoLocacao")
+    @JoinColumn(name ="id",referencedColumnName = "id")
+    private Situacao situacao;
 
-    public Locacao() {
+    public Locacao(Produto produtos, Setor setor, Situacao situacao) {
+        this.produtos = produtos;
+        this.setor = setor;
+        this.situacao = situacao;
+    }
+   
+          
+ 
+   
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Produto getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(Produto produtos) {
+        this.produtos = produtos;
+    }
+
+    public Setor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(Setor setor) {
+        this.setor = setor;
+    }
+
+    public Situacao getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Situacao situacao) {
+        this.situacao = situacao;
     }
     
     
@@ -54,13 +105,7 @@ public class Locacao implements Serializable {
         this.locador = locador;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
+   
   
     
 

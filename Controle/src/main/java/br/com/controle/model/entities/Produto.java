@@ -28,13 +28,13 @@ public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name ="id", unique = true, nullable = false)
+    @Column (name ="id", nullable = false)
     private int id;
-    @Column (name ="ns", unique = true, nullable = false)
+    @Column (name ="ns", nullable = false)
     private String ns;
-    @Column (name ="desc", unique = true, nullable = false)
+    @Column (name ="desc", nullable = false)
     private String desc;
-    @Column (name ="quantidade", unique = true, nullable = false)
+    @Column (name ="quantidade", nullable = false)
     private String quantidade;
     
        @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)

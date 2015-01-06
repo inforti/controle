@@ -22,51 +22,35 @@ import org.hibernate.annotations.ForeignKey;
  * @author provider
  */
 @Entity
-@Table(name="setor")
-public class Setor implements Serializable {
+@Table(name="situacao")
+public class Situacao implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name ="id", unique = true, nullable = false)
     private int id;
-    @Column (name ="nome",nullable = false)
-    private String nome;
-
-    @OneToMany(mappedBy = "setor", fetch = FetchType.LAZY)
-    @ForeignKey(name="SetorLocacao")
+    @Column (name ="desc",  nullable = false)
+    private String desc;
+    
+    @OneToMany(mappedBy = "situacao", fetch = FetchType.LAZY)
+    @ForeignKey(name="SituaaoLocacao")
     private List<Locacao> locacoes;
 
-    public Setor() {
-    }
-
-    public List<Locacao> getLocacoes() {
-        return locacoes;
-    }
-
-    public void setLocacoes(List<Locacao> locacoes) {
-        this.locacoes = locacoes;
+    public Situacao() {
     }
     
-    
-    public String getNome() {
-        return nome;
+
+    public String getDesc() {
+        return desc;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
-
-    public String getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
-    }
-    private String responsavel;
 
     public int getId() {
         return id;
+       
     }
 
     public void setId(int id) {
@@ -83,10 +67,10 @@ public class Setor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Setor)) {
+        if (!(object instanceof Situacao)) {
             return false;
         }
-        Setor other = (Setor) object;
+        Situacao other = (Situacao) object;
         if (this.id != other.id) {
             return false;
         }
@@ -95,7 +79,7 @@ public class Setor implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.controle.model.entities.Setor[ id=" + id + " ]";
+        return "br.com.controle.model.entities.Situacao[ id=" + id + " ]";
     }
     
 }
