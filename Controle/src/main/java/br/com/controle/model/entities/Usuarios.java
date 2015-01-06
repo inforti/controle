@@ -1,7 +1,7 @@
 
 package br.com.controle.model.entities;
 
-import javassist.SerialVersionUID;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="usuarios")
-public class Usuarios {
+public class Usuarios implements Serializable {
     private static  final long SerialVersionUID = 1L;
     @Id
     @GeneratedValue
